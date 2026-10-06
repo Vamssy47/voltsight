@@ -1,0 +1,810 @@
+{
+  "zones": {
+    "total": 992,
+    "train": 592,
+    "val": 200,
+    "test": 200,
+    "train_contrefactuel": 1036
+  },
+  "parametres_cnn": 72081,
+  "variantes": {
+    "standard": {
+      "executions": [
+        {
+          "seuil": 0.9725,
+          "exactitude": 0.985,
+          "precision": 1.0,
+          "rappel": 0.94,
+          "f1": 0.9691,
+          "roc_auc": 0.9997,
+          "pr_auc": 0.9992,
+          "vp": 47,
+          "fp": 0,
+          "fn": 3,
+          "vn": 150,
+          "masquage": {
+            "proba_moyenne_originale": 0.9904,
+            "defaut_efface_x1": 0.9519,
+            "baisse_defaut_efface_x1": 0.0384,
+            "detecte_apres_effacement_x1": 0.66,
+            "defaut_efface_x1.5": 0.7041,
+            "baisse_defaut_efface_x1.5": 0.2862,
+            "detecte_apres_effacement_x1.5": 0.26,
+            "baisse_zone_saine_effacee_x1": 0.0045,
+            "baisse_zone_saine_effacee_x1.5": 0.0093,
+            "detecte_avant": 0.94
+          },
+          "gradcam_pointing_game": 0.64,
+          "decision": {
+            "cible_rappel_0.90": {
+              "seuil": 0.9725,
+              "rappel": 0.94,
+              "precision": 1.0,
+              "f1": 0.9691,
+              "vp": 47,
+              "fp": 0,
+              "fn": 3,
+              "vn": 150
+            },
+            "cout_5_pour_1": {
+              "seuil": 0.8074,
+              "rappel": 1.0,
+              "precision": 0.9615,
+              "f1": 0.9804,
+              "vp": 50,
+              "fp": 2,
+              "fn": 0,
+              "vn": 148
+            },
+            "cout_10_pour_1": {
+              "seuil": 0.509,
+              "rappel": 1.0,
+              "precision": 0.8929,
+              "f1": 0.9434,
+              "vp": 50,
+              "fp": 6,
+              "fn": 0,
+              "vn": 144
+            },
+            "cout_20_pour_1": {
+              "seuil": 0.509,
+              "rappel": 1.0,
+              "precision": 0.8929,
+              "f1": 0.9434,
+              "vp": 50,
+              "fp": 6,
+              "fn": 0,
+              "vn": 144
+            }
+          },
+          "meilleure_epoque": 0,
+          "duree_s": 1.6
+        },
+        {
+          "seuil": 0.8913,
+          "exactitude": 0.98,
+          "precision": 0.96,
+          "rappel": 0.96,
+          "f1": 0.96,
+          "roc_auc": 0.9989,
+          "pr_auc": 0.9968,
+          "vp": 48,
+          "fp": 2,
+          "fn": 2,
+          "vn": 148,
+          "masquage": {
+            "proba_moyenne_originale": 0.9762,
+            "defaut_efface_x1": 0.9371,
+            "baisse_defaut_efface_x1": 0.039,
+            "detecte_apres_effacement_x1": 0.86,
+            "defaut_efface_x1.5": 0.7309,
+            "baisse_defaut_efface_x1.5": 0.2453,
+            "detecte_apres_effacement_x1.5": 0.46,
+            "baisse_zone_saine_effacee_x1": 0.0039,
+            "baisse_zone_saine_effacee_x1.5": 0.0289,
+            "detecte_avant": 0.96
+          },
+          "gradcam_pointing_game": 0.56,
+          "decision": {
+            "cible_rappel_0.90": {
+              "seuil": 0.8913,
+              "rappel": 0.96,
+              "precision": 0.96,
+              "f1": 0.96,
+              "vp": 48,
+              "fp": 2,
+              "fn": 2,
+              "vn": 148
+            },
+            "cout_5_pour_1": {
+              "seuil": 0.8911,
+              "rappel": 0.96,
+              "precision": 0.96,
+              "f1": 0.96,
+              "vp": 48,
+              "fp": 2,
+              "fn": 2,
+              "vn": 148
+            },
+            "cout_10_pour_1": {
+              "seuil": 0.1061,
+              "rappel": 1.0,
+              "precision": 0.5435,
+              "f1": 0.7042,
+              "vp": 50,
+              "fp": 42,
+              "fn": 0,
+              "vn": 108
+            },
+            "cout_20_pour_1": {
+              "seuil": 0.1061,
+              "rappel": 1.0,
+              "precision": 0.5435,
+              "f1": 0.7042,
+              "vp": 50,
+              "fp": 42,
+              "fn": 0,
+              "vn": 108
+            }
+          },
+          "meilleure_epoque": 0,
+          "duree_s": 1.5
+        },
+        {
+          "seuil": 0.9514,
+          "exactitude": 0.98,
+          "precision": 1.0,
+          "rappel": 0.92,
+          "f1": 0.9583,
+          "roc_auc": 1.0,
+          "pr_auc": 1.0,
+          "vp": 46,
+          "fp": 0,
+          "fn": 4,
+          "vn": 150,
+          "masquage": {
+            "proba_moyenne_originale": 0.9816,
+            "defaut_efface_x1": 0.937,
+            "baisse_defaut_efface_x1": 0.0445,
+            "detecte_apres_effacement_x1": 0.64,
+            "defaut_efface_x1.5": 0.6581,
+            "baisse_defaut_efface_x1.5": 0.3235,
+            "detecte_apres_effacement_x1.5": 0.32,
+            "baisse_zone_saine_effacee_x1": 0.0025,
+            "baisse_zone_saine_effacee_x1.5": 0.0245,
+            "detecte_avant": 0.92
+          },
+          "gradcam_pointing_game": 0.64,
+          "decision": {
+            "cible_rappel_0.90": {
+              "seuil": 0.9514,
+              "rappel": 0.92,
+              "precision": 1.0,
+              "f1": 0.9583,
+              "vp": 46,
+              "fp": 0,
+              "fn": 4,
+              "vn": 150
+            },
+            "cout_5_pour_1": {
+              "seuil": 0.2016,
+              "rappel": 1.0,
+              "precision": 0.8621,
+              "f1": 0.9259,
+              "vp": 50,
+              "fp": 8,
+              "fn": 0,
+              "vn": 142
+            },
+            "cout_10_pour_1": {
+              "seuil": 0.2016,
+              "rappel": 1.0,
+              "precision": 0.8621,
+              "f1": 0.9259,
+              "vp": 50,
+              "fp": 8,
+              "fn": 0,
+              "vn": 142
+            },
+            "cout_20_pour_1": {
+              "seuil": 0.2016,
+              "rappel": 1.0,
+              "precision": 0.8621,
+              "f1": 0.9259,
+              "vp": 50,
+              "fp": 8,
+              "fn": 0,
+              "vn": 142
+            }
+          },
+          "meilleure_epoque": 0,
+          "duree_s": 1.5
+        }
+      ],
+      "synthese": {
+        "seuil": {
+          "moyenne": 0.9384,
+          "ecart_type": 0.0344
+        },
+        "exactitude": {
+          "moyenne": 0.9817,
+          "ecart_type": 0.0024
+        },
+        "precision": {
+          "moyenne": 0.9867,
+          "ecart_type": 0.0189
+        },
+        "rappel": {
+          "moyenne": 0.94,
+          "ecart_type": 0.0163
+        },
+        "f1": {
+          "moyenne": 0.9625,
+          "ecart_type": 0.0047
+        },
+        "roc_auc": {
+          "moyenne": 0.9995,
+          "ecart_type": 0.0005
+        },
+        "pr_auc": {
+          "moyenne": 0.9987,
+          "ecart_type": 0.0014
+        },
+        "gradcam_pointing_game": {
+          "moyenne": 0.6133,
+          "ecart_type": 0.0377
+        },
+        "proba_moyenne_originale": {
+          "moyenne": 0.9827,
+          "ecart_type": 0.0059
+        },
+        "defaut_efface_x1": {
+          "moyenne": 0.942,
+          "ecart_type": 0.007
+        },
+        "baisse_defaut_efface_x1": {
+          "moyenne": 0.0406,
+          "ecart_type": 0.0027
+        },
+        "detecte_apres_effacement_x1": {
+          "moyenne": 0.72,
+          "ecart_type": 0.0993
+        },
+        "defaut_efface_x1.5": {
+          "moyenne": 0.6977,
+          "ecart_type": 0.0301
+        },
+        "baisse_defaut_efface_x1.5": {
+          "moyenne": 0.285,
+          "ecart_type": 0.0319
+        },
+        "detecte_apres_effacement_x1.5": {
+          "moyenne": 0.3467,
+          "ecart_type": 0.0838
+        },
+        "baisse_zone_saine_effacee_x1": {
+          "moyenne": 0.0036,
+          "ecart_type": 0.0008
+        },
+        "baisse_zone_saine_effacee_x1.5": {
+          "moyenne": 0.0209,
+          "ecart_type": 0.0084
+        },
+        "detecte_avant": {
+          "moyenne": 0.94,
+          "ecart_type": 0.0163
+        },
+        "cible_rappel_0.90_rappel": {
+          "moyenne": 0.94,
+          "ecart_type": 0.0163
+        },
+        "cible_rappel_0.90_precision": {
+          "moyenne": 0.9867,
+          "ecart_type": 0.0189
+        },
+        "cout_5_pour_1_rappel": {
+          "moyenne": 0.9867,
+          "ecart_type": 0.0189
+        },
+        "cout_5_pour_1_precision": {
+          "moyenne": 0.9279,
+          "ecart_type": 0.0465
+        },
+        "cout_10_pour_1_rappel": {
+          "moyenne": 1.0,
+          "ecart_type": 0.0
+        },
+        "cout_10_pour_1_precision": {
+          "moyenne": 0.7662,
+          "ecart_type": 0.158
+        },
+        "cout_20_pour_1_rappel": {
+          "moyenne": 1.0,
+          "ecart_type": 0.0
+        },
+        "cout_20_pour_1_precision": {
+          "moyenne": 0.7662,
+          "ecart_type": 0.158
+        }
+      },
+      "ensemble": {
+        "seuil": 0.9179,
+        "exactitude": 0.995,
+        "precision": 1.0,
+        "rappel": 0.98,
+        "f1": 0.9899,
+        "roc_auc": 1.0,
+        "pr_auc": 1.0,
+        "vp": 49,
+        "fp": 0,
+        "fn": 1,
+        "vn": 150,
+        "masquage": {
+          "proba_moyenne_originale": 0.9827,
+          "defaut_efface_x1": 0.942,
+          "baisse_defaut_efface_x1": 0.0407,
+          "detecte_apres_effacement_x1": 0.76,
+          "defaut_efface_x1.5": 0.6977,
+          "baisse_defaut_efface_x1.5": 0.285,
+          "detecte_apres_effacement_x1.5": 0.34,
+          "baisse_zone_saine_effacee_x1": 0.0036,
+          "baisse_zone_saine_effacee_x1.5": 0.0209,
+          "detecte_avant": 0.98
+        },
+        "gradcam_pointing_game": 0.74,
+        "decision": {
+          "cible_rappel_0.90": {
+            "seuil": 0.9179,
+            "rappel": 0.98,
+            "precision": 1.0,
+            "f1": 0.9899,
+            "vp": 49,
+            "fp": 0,
+            "fn": 1,
+            "vn": 150
+          },
+          "cout_5_pour_1": {
+            "seuil": 0.5146,
+            "rappel": 1.0,
+            "precision": 0.9259,
+            "f1": 0.9615,
+            "vp": 50,
+            "fp": 4,
+            "fn": 0,
+            "vn": 146
+          },
+          "cout_10_pour_1": {
+            "seuil": 0.4218,
+            "rappel": 1.0,
+            "precision": 0.8475,
+            "f1": 0.9174,
+            "vp": 50,
+            "fp": 9,
+            "fn": 0,
+            "vn": 141
+          },
+          "cout_20_pour_1": {
+            "seuil": 0.1324,
+            "rappel": 1.0,
+            "precision": 0.6579,
+            "f1": 0.7937,
+            "vp": 50,
+            "fp": 26,
+            "fn": 0,
+            "vn": 124
+          }
+        },
+        "nb_modeles": 3,
+        "seuils_individuels": [
+          0.9725,
+          0.8913,
+          0.9514
+        ]
+      }
+    },
+    "contrefactuel": {
+      "executions": [
+        {
+          "seuil": 0.9303,
+          "exactitude": 0.985,
+          "precision": 1.0,
+          "rappel": 0.94,
+          "f1": 0.9691,
+          "roc_auc": 1.0,
+          "pr_auc": 1.0,
+          "vp": 47,
+          "fp": 0,
+          "fn": 3,
+          "vn": 150,
+          "masquage": {
+            "proba_moyenne_originale": 0.9791,
+            "defaut_efface_x1": 0.7614,
+            "baisse_defaut_efface_x1": 0.2177,
+            "detecte_apres_effacement_x1": 0.38,
+            "defaut_efface_x1.5": 0.2623,
+            "baisse_defaut_efface_x1.5": 0.7168,
+            "detecte_apres_effacement_x1.5": 0.04,
+            "baisse_zone_saine_effacee_x1": 0.0174,
+            "baisse_zone_saine_effacee_x1.5": 0.0453,
+            "detecte_avant": 0.94
+          },
+          "gradcam_pointing_game": 0.6,
+          "decision": {
+            "cible_rappel_0.90": {
+              "seuil": 0.9303,
+              "rappel": 0.94,
+              "precision": 1.0,
+              "f1": 0.9691,
+              "vp": 47,
+              "fp": 0,
+              "fn": 3,
+              "vn": 150
+            },
+            "cout_5_pour_1": {
+              "seuil": 0.2722,
+              "rappel": 1.0,
+              "precision": 0.9615,
+              "f1": 0.9804,
+              "vp": 50,
+              "fp": 2,
+              "fn": 0,
+              "vn": 148
+            },
+            "cout_10_pour_1": {
+              "seuil": 0.2722,
+              "rappel": 1.0,
+              "precision": 0.9615,
+              "f1": 0.9804,
+              "vp": 50,
+              "fp": 2,
+              "fn": 0,
+              "vn": 148
+            },
+            "cout_20_pour_1": {
+              "seuil": 0.0269,
+              "rappel": 1.0,
+              "precision": 0.7246,
+              "f1": 0.8403,
+              "vp": 50,
+              "fp": 19,
+              "fn": 0,
+              "vn": 131
+            }
+          },
+          "meilleure_epoque": 0,
+          "duree_s": 1.5
+        },
+        {
+          "seuil": 0.8793,
+          "exactitude": 0.965,
+          "precision": 1.0,
+          "rappel": 0.86,
+          "f1": 0.9247,
+          "roc_auc": 0.9995,
+          "pr_auc": 0.9984,
+          "vp": 43,
+          "fp": 0,
+          "fn": 7,
+          "vn": 150,
+          "masquage": {
+            "proba_moyenne_originale": 0.9457,
+            "defaut_efface_x1": 0.7112,
+            "baisse_defaut_efface_x1": 0.2345,
+            "detecte_apres_effacement_x1": 0.42,
+            "defaut_efface_x1.5": 0.2514,
+            "baisse_defaut_efface_x1.5": 0.6943,
+            "detecte_apres_effacement_x1.5": 0.02,
+            "baisse_zone_saine_effacee_x1": 0.0102,
+            "baisse_zone_saine_effacee_x1.5": 0.0543,
+            "detecte_avant": 0.86
+          },
+          "gradcam_pointing_game": 0.74,
+          "decision": {
+            "cible_rappel_0.90": {
+              "seuil": 0.8793,
+              "rappel": 0.86,
+              "precision": 1.0,
+              "f1": 0.9247,
+              "vp": 43,
+              "fp": 0,
+              "fn": 7,
+              "vn": 150
+            },
+            "cout_5_pour_1": {
+              "seuil": 0.1309,
+              "rappel": 1.0,
+              "precision": 0.9091,
+              "f1": 0.9524,
+              "vp": 50,
+              "fp": 5,
+              "fn": 0,
+              "vn": 145
+            },
+            "cout_10_pour_1": {
+              "seuil": 0.1309,
+              "rappel": 1.0,
+              "precision": 0.9091,
+              "f1": 0.9524,
+              "vp": 50,
+              "fp": 5,
+              "fn": 0,
+              "vn": 145
+            },
+            "cout_20_pour_1": {
+              "seuil": 0.1309,
+              "rappel": 1.0,
+              "precision": 0.9091,
+              "f1": 0.9524,
+              "vp": 50,
+              "fp": 5,
+              "fn": 0,
+              "vn": 145
+            }
+          },
+          "meilleure_epoque": 0,
+          "duree_s": 1.6
+        },
+        {
+          "seuil": 0.9918,
+          "exactitude": 0.97,
+          "precision": 1.0,
+          "rappel": 0.88,
+          "f1": 0.9362,
+          "roc_auc": 1.0,
+          "pr_auc": 1.0,
+          "vp": 44,
+          "fp": 0,
+          "fn": 6,
+          "vn": 150,
+          "masquage": {
+            "proba_moyenne_originale": 0.9959,
+            "defaut_efface_x1": 0.9627,
+            "baisse_defaut_efface_x1": 0.0332,
+            "detecte_apres_effacement_x1": 0.52,
+            "defaut_efface_x1.5": 0.5667,
+            "baisse_defaut_efface_x1.5": 0.4292,
+            "detecte_apres_effacement_x1.5": 0.06,
+            "baisse_zone_saine_effacee_x1": 0.0032,
+            "baisse_zone_saine_effacee_x1.5": 0.0042,
+            "detecte_avant": 0.88
+          },
+          "gradcam_pointing_game": 0.58,
+          "decision": {
+            "cible_rappel_0.90": {
+              "seuil": 0.9918,
+              "rappel": 0.88,
+              "precision": 1.0,
+              "f1": 0.9362,
+              "vp": 44,
+              "fp": 0,
+              "fn": 6,
+              "vn": 150
+            },
+            "cout_5_pour_1": {
+              "seuil": 0.8852,
+              "rappel": 1.0,
+              "precision": 0.9804,
+              "f1": 0.9901,
+              "vp": 50,
+              "fp": 1,
+              "fn": 0,
+              "vn": 149
+            },
+            "cout_10_pour_1": {
+              "seuil": 0.8852,
+              "rappel": 1.0,
+              "precision": 0.9804,
+              "f1": 0.9901,
+              "vp": 50,
+              "fp": 1,
+              "fn": 0,
+              "vn": 149
+            },
+            "cout_20_pour_1": {
+              "seuil": 0.8852,
+              "rappel": 1.0,
+              "precision": 0.9804,
+              "f1": 0.9901,
+              "vp": 50,
+              "fp": 1,
+              "fn": 0,
+              "vn": 149
+            }
+          },
+          "meilleure_epoque": 0,
+          "duree_s": 1.5
+        }
+      ],
+      "synthese": {
+        "seuil": {
+          "moyenne": 0.9338,
+          "ecart_type": 0.046
+        },
+        "exactitude": {
+          "moyenne": 0.9733,
+          "ecart_type": 0.0085
+        },
+        "precision": {
+          "moyenne": 1.0,
+          "ecart_type": 0.0
+        },
+        "rappel": {
+          "moyenne": 0.8933,
+          "ecart_type": 0.034
+        },
+        "f1": {
+          "moyenne": 0.9433,
+          "ecart_type": 0.0188
+        },
+        "roc_auc": {
+          "moyenne": 0.9998,
+          "ecart_type": 0.0002
+        },
+        "pr_auc": {
+          "moyenne": 0.9995,
+          "ecart_type": 0.0008
+        },
+        "gradcam_pointing_game": {
+          "moyenne": 0.64,
+          "ecart_type": 0.0712
+        },
+        "proba_moyenne_originale": {
+          "moyenne": 0.9736,
+          "ecart_type": 0.0209
+        },
+        "defaut_efface_x1": {
+          "moyenne": 0.8118,
+          "ecart_type": 0.1087
+        },
+        "baisse_defaut_efface_x1": {
+          "moyenne": 0.1618,
+          "ecart_type": 0.0912
+        },
+        "detecte_apres_effacement_x1": {
+          "moyenne": 0.44,
+          "ecart_type": 0.0589
+        },
+        "defaut_efface_x1.5": {
+          "moyenne": 0.3601,
+          "ecart_type": 0.1461
+        },
+        "baisse_defaut_efface_x1.5": {
+          "moyenne": 0.6134,
+          "ecart_type": 0.1306
+        },
+        "detecte_apres_effacement_x1.5": {
+          "moyenne": 0.04,
+          "ecart_type": 0.0163
+        },
+        "baisse_zone_saine_effacee_x1": {
+          "moyenne": 0.0103,
+          "ecart_type": 0.0058
+        },
+        "baisse_zone_saine_effacee_x1.5": {
+          "moyenne": 0.0346,
+          "ecart_type": 0.0218
+        },
+        "detecte_avant": {
+          "moyenne": 0.8933,
+          "ecart_type": 0.034
+        },
+        "cible_rappel_0.90_rappel": {
+          "moyenne": 0.8933,
+          "ecart_type": 0.034
+        },
+        "cible_rappel_0.90_precision": {
+          "moyenne": 1.0,
+          "ecart_type": 0.0
+        },
+        "cout_5_pour_1_rappel": {
+          "moyenne": 1.0,
+          "ecart_type": 0.0
+        },
+        "cout_5_pour_1_precision": {
+          "moyenne": 0.9503,
+          "ecart_type": 0.0302
+        },
+        "cout_10_pour_1_rappel": {
+          "moyenne": 1.0,
+          "ecart_type": 0.0
+        },
+        "cout_10_pour_1_precision": {
+          "moyenne": 0.9503,
+          "ecart_type": 0.0302
+        },
+        "cout_20_pour_1_rappel": {
+          "moyenne": 1.0,
+          "ecart_type": 0.0
+        },
+        "cout_20_pour_1_precision": {
+          "moyenne": 0.8714,
+          "ecart_type": 0.1078
+        }
+      },
+      "ensemble": {
+        "seuil": 0.9414,
+        "exactitude": 0.965,
+        "precision": 1.0,
+        "rappel": 0.86,
+        "f1": 0.9247,
+        "roc_auc": 1.0,
+        "pr_auc": 1.0,
+        "vp": 43,
+        "fp": 0,
+        "fn": 7,
+        "vn": 150,
+        "masquage": {
+          "proba_moyenne_originale": 0.9736,
+          "defaut_efface_x1": 0.8118,
+          "baisse_defaut_efface_x1": 0.1618,
+          "detecte_apres_effacement_x1": 0.3,
+          "defaut_efface_x1.5": 0.3602,
+          "baisse_defaut_efface_x1.5": 0.6134,
+          "detecte_apres_effacement_x1.5": 0.0,
+          "baisse_zone_saine_effacee_x1": 0.0103,
+          "baisse_zone_saine_effacee_x1.5": 0.0346,
+          "detecte_avant": 0.86
+        },
+        "gradcam_pointing_game": 0.68,
+        "decision": {
+          "cible_rappel_0.90": {
+            "seuil": 0.9414,
+            "rappel": 0.86,
+            "precision": 1.0,
+            "f1": 0.9247,
+            "vp": 43,
+            "fp": 0,
+            "fn": 7,
+            "vn": 150
+          },
+          "cout_5_pour_1": {
+            "seuil": 0.4294,
+            "rappel": 1.0,
+            "precision": 0.9804,
+            "f1": 0.9901,
+            "vp": 50,
+            "fp": 1,
+            "fn": 0,
+            "vn": 149
+          },
+          "cout_10_pour_1": {
+            "seuil": 0.4294,
+            "rappel": 1.0,
+            "precision": 0.9804,
+            "f1": 0.9901,
+            "vp": 50,
+            "fp": 1,
+            "fn": 0,
+            "vn": 149
+          },
+          "cout_20_pour_1": {
+            "seuil": 0.4294,
+            "rappel": 1.0,
+            "precision": 0.9804,
+            "f1": 0.9901,
+            "vp": 50,
+            "fp": 1,
+            "fn": 0,
+            "vn": 149
+          }
+        },
+        "nb_modeles": 3,
+        "seuils_individuels": [
+          0.9303,
+          0.8793,
+          0.9918
+        ]
+      }
+    }
+  },
+  "gradcam_pointing_hasard": 0.1172,
+  "reference_bpnn": {
+    "pr_auc": 0.674,
+    "rappel": 0.84,
+    "precision": 0.4941,
+    "f1": 0.6222,
+    "baisse_defaut_efface_x1": 0.0422,
+    "baisse_defaut_efface_x1.5": 0.0611,
+    "baisse_zone_saine_effacee_x1.5": 0.0449
+  }
+}
