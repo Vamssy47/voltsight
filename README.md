@@ -1,4 +1,4 @@
-# VoltSight:Inspection de lignes électriques par drone et IA
+# VoltSight : Inspection de lignes électriques par drone et IA
 
 **Du pixel à la décision :** détecter automatiquement les défauts sur les photos de drone des installations électriques, puis prioriser les réparations.
 
@@ -48,10 +48,10 @@ voltsight/
 
 **Dans Google Colab**, le plus simple : ouvre `notebooks/voltsight_colab.ipynb`, active le GPU, puis « Tout exécuter ».
 
-**Sur ton ordinateur :**
+**Sur mon ordinateur :**
 
 ```bash
-git clone https://github.com/<ton-compte>/voltsight.git
+git clone https://github.com/Vamssy47/voltsight.git
 cd voltsight
 pip install -r requirements.txt
 git clone --depth 1 https://github.com/InsulatorData/InsulatorDataSet.git data/InsulatorDataSet
