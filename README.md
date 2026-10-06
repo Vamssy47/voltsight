@@ -1,4 +1,4 @@
-# VoltSight — Inspection de lignes électriques par drone et IA
+# VoltSight:Inspection de lignes électriques par drone et IA
 
 **Du pixel à la décision :** détecter automatiquement les défauts sur les photos de drone des installations électriques, puis prioriser les réparations.
 
