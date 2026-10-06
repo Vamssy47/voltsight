@@ -1,0 +1,8 @@
+# Versions utilisées pour les résultats du README (Python 3.13).
+# Sur Colab, torch est déjà installé : seules les autres lignes comptent.
+numpy>=2.0
+scikit-learn==1.9.1
+scikit-image>=0.24
+matplotlib>=3.8
+pillow>=10
+torch>=2.2

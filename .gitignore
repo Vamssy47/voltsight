@@ -1,0 +1,15 @@
+# Données (téléchargées par les commandes, jamais versionnées)
+data/*
+!data/.gitkeep
+*.npz
+
+# Python
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.venv/
+venv/
+
+# Système
+.DS_Store
+Thumbs.db
