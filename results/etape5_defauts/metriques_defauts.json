@@ -1,0 +1,171 @@
+{
+  "glass-insulator": {
+    "classes": [
+      "good",
+      "missing-cap"
+    ],
+    "n_test": {
+      "good": 29,
+      "missing-cap": 30
+    },
+    "precision_equilibree": 0.8494,
+    "regle_simple": {
+      "defauts_trouves": "22/30",
+      "fausses_alertes": "1/29"
+    },
+    "seuil_cout_10": 0.019,
+    "regle_cout": {
+      "defauts_trouves": "29/30",
+      "fausses_alertes": "6/29"
+    },
+    "matrice_confusion": [
+      [
+        28,
+        1
+      ],
+      [
+        8,
+        22
+      ]
+    ],
+    "modele": "entraîné",
+    "duree_s": 449
+  },
+  "lightning-rod-suspension": {
+    "classes": [
+      "good",
+      "rust"
+    ],
+    "n_test": {
+      "good": 231,
+      "rust": 20
+    },
+    "precision_equilibree": 0.95,
+    "regle_simple": {
+      "defauts_trouves": "18/20",
+      "fausses_alertes": "0/231"
+    },
+    "seuil_cout_10": 0.0999,
+    "regle_cout": {
+      "defauts_trouves": "19/20",
+      "fausses_alertes": "0/231"
+    },
+    "matrice_confusion": [
+      [
+        231,
+        0
+      ],
+      [
+        2,
+        18
+      ]
+    ],
+    "modele": "entraîné",
+    "duree_s": 147
+  },
+  "polymer-insulator-upper-shackle": {
+    "classes": [
+      "good",
+      "rust"
+    ],
+    "n_test": {
+      "good": 31,
+      "rust": 33
+    },
+    "precision_equilibree": 1.0,
+    "regle_simple": {
+      "defauts_trouves": "33/33",
+      "fausses_alertes": "0/31"
+    },
+    "seuil_cout_10": 0.0265,
+    "regle_cout": {
+      "defauts_trouves": "33/33",
+      "fausses_alertes": "3/31"
+    },
+    "matrice_confusion": [
+      [
+        31,
+        0
+      ],
+      [
+        0,
+        33
+      ]
+    ],
+    "modele": "entraîné",
+    "duree_s": 309
+  },
+  "vari-grip": {
+    "classes": [
+      "good",
+      "bird-nest",
+      "rust"
+    ],
+    "n_test": {
+      "good": 238,
+      "bird-nest": 23,
+      "rust": 20
+    },
+    "precision_equilibree": 0.9357,
+    "regle_simple": {
+      "defauts_trouves": "39/43",
+      "fausses_alertes": "3/238"
+    },
+    "seuil_cout_10": 0.0053,
+    "regle_cout": {
+      "defauts_trouves": "42/43",
+      "fausses_alertes": "26/238"
+    },
+    "matrice_confusion": [
+      [
+        235,
+        3,
+        0
+      ],
+      [
+        3,
+        20,
+        0
+      ],
+      [
+        1,
+        0,
+        19
+      ]
+    ],
+    "modele": "entraîné",
+    "duree_s": 202
+  },
+  "yoke-suspension": {
+    "classes": [
+      "good",
+      "rust"
+    ],
+    "n_test": {
+      "good": 5742,
+      "rust": 20
+    },
+    "precision_equilibree": 0.9995,
+    "regle_simple": {
+      "defauts_trouves": "20/20",
+      "fausses_alertes": "6/5742"
+    },
+    "seuil_cout_10": 0.2392,
+    "regle_cout": {
+      "defauts_trouves": "20/20",
+      "fausses_alertes": "7/5742"
+    },
+    "matrice_confusion": [
+      [
+        5736,
+        6
+      ],
+      [
+        0,
+        20
+      ]
+    ],
+    "modele": "entraîné",
+    "duree_s": 133
+  }
+}

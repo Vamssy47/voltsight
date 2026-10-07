@@ -1,0 +1,9 @@
+équipement,sous-ensemble,n,classes,précision équilibrée,défauts trouvés,fausses alertes
+glass-insulator,photos déjà vues,11,{'missing-cap': 11},,9/11,0/0
+glass-insulator,photos nouvelles,48,"{'good': 29, 'missing-cap': 19}",0.825,13/19,1/29
+lightning-rod-suspension,photos nouvelles,251,"{'good': 231, 'rust': 20}",0.95,18/20,0/231
+polymer-insulator-upper-shackle,photos nouvelles,64,"{'good': 31, 'rust': 33}",1.0,33/33,0/31
+vari-grip,photos déjà vues,135,"{'bird-nest': 9, 'good': 116, 'rust': 10}",0.93,17/19,0/116
+vari-grip,photos nouvelles,146,"{'bird-nest': 14, 'good': 122, 'rust': 10}",0.944,22/24,3/122
+yoke-suspension,photos déjà vues,484,"{'good': 481, 'rust': 3}",1.0,3/3,0/481
+yoke-suspension,photos nouvelles,5278,"{'good': 5261, 'rust': 17}",0.999,17/17,6/5261

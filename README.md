@@ -4,7 +4,11 @@
 
 Projet de portfolio en science des données, inspiré des pratiques d'inspection par drone et par robot d'Hydro-Québec (LineScout, LineDrone, projet CableInspect-AD avec Mila).
 
-**Résultat phare :** sur 10 607 vraies photos de drone (jeu InsPLAD), notre détecteur **YOLO11s atteint un mAP@0.5:0.95 de 0,740**, comparable au meilleur modèle de l'article de référence (DetectoRS, 0,721), tout en étant beaucoup plus léger : environ 3 ms par image sur un GPU T4.
+**Résultats phares** sur de vraies photos de drone (jeu InsPLAD) :
+
+- **Détection des équipements :** YOLO11s atteint un **mAP@0.5:0.95 de 0,740**, comparable au meilleur modèle de l'article de référence (DetectoRS, 0,721), tout en étant beaucoup plus léger : environ 3 ms par image sur un GPU T4.
+- **Diagnostic des défauts** (rouille, nid d'oiseau, capuchon manquant) : précision équilibrée moyenne de **0,947** (article : 0,954). Avec un seuil d'alerte réglé sur le coût métier, le modèle trouve **143 défauts sur 146** pour seulement 0,7 % de fausses alertes.
+- **Audit des données :** deux problèmes trouvés dans le jeu public et traités, à savoir des noms de classes incohérents et une fuite entre l'entraînement et le test.
 
 ## Où en est le projet
 
@@ -15,7 +19,7 @@ Projet de portfolio en science des données, inspiré des pratiques d'inspection
 | 3. Diagnostic des défauts | Détection d'un raccourci, tâche corrigée, CNN contrefactuel, Grad-CAM | ✅ |
 | 4. Décision | Ensemble de 3 modèles, seuil fondé sur le coût d'un défaut manqué | ✅ (amélioration prévue : seuil par validation croisée) |
 | 5.1–5.2 Équipements réels | InsPLAD : 10 607 photos de drone, 17 équipements, détection YOLO11s | ✅ mAP 0,740 |
-| 5.3 Défauts réels | Rouille, nid d'oiseau, pièce cassée sur les équipements détectés | ⏳ prochaine étape |
+| 5.3 Défauts réels | Rouille, nid d'oiseau, capuchon manquant ; seuil fondé sur le coût ; audit de fuite | ✅ précision équilibrée 0,947 |
 | 6. Végétation et capteurs | Segmentation des lignes, anomalies de capteurs | ⏳ |
 | 7. Score de risque et tableau de bord | Priorisation des interventions, API, carte | ⏳ |
 
@@ -52,6 +56,47 @@ Le jeu **InsPLAD** contient de vraies photos de drone de lignes électriques (19
 ![Courbe précision-rappel YOLO](results/etape5_yolo/insplad_eval__BoxPR_curve.png)
 
 Notebooks : [`05_insplad_exploration.ipynb`](notebooks/05_insplad_exploration.ipynb) · [`06_yolo_detection.ipynb`](notebooks/06_yolo_detection.ipynb)
+
+## Résultats clés : diagnostic des défauts sur de vrais équipements (phase 5.3)
+
+YOLO trouve les équipements ; un second modèle dit **s'ils sont en bon état**. Les données sont la partie `supervised_fault_classification` d'InsPLAD : des découpes d'équipements issues de vraies photos de drone. On entraîne un modèle EfficientNet-B0 par équipement, comme dans l'article, sur un GPU T4 (Kaggle).
+
+| Équipement | Défaut | Précision équilibrée | Défauts trouvés (seuil coût) | Fausses alertes (seuil coût) |
+| --- | --- | --- | --- | --- |
+| Isolateur polymère (manille) | rouille | **1,000** | 33 / 33 | 3 / 31 |
+| Suspension de joug | rouille | **0,9995** | 20 / 20 | 7 / 5 742 |
+| Suspension de paratonnerre | rouille | 0,950 | 19 / 20 | 0 / 231 |
+| Vari-grip | rouille, nid d'oiseau | 0,936 | 42 / 43 | 26 / 238 |
+| Isolateur en verre | capuchon manquant | 0,849 | 29 / 30 | 6 / 29 |
+| **Moyenne / total** | | **0,947** (article : 0,954) | **143 / 146** | **42 / 6 271** |
+
+**Ce que VoltSight ajoute par rapport à l'article :**
+
+1. **Un seuil d'alerte fondé sur le coût.** Un défaut manqué compte comme 10 fausses alertes. Le seuil est réglé par **validation croisée par photo de drone** sur tout l'entraînement, jamais sur le test.
+
+   | Règle de décision | Défauts trouvés | Fausses alertes | Coût total |
+   | --- | --- | --- | --- |
+   | Simple (classe la plus probable) | 132 / 146 (90 %) | 10 | 150 |
+   | **Seuil coût** | **143 / 146 (98 %)** | 42 | **72** |
+
+   Le coût est divisé par deux. Pour l'isolateur en verre, les défauts ratés passent de 8 à 1. Une première version réglait le seuil sur une petite validation : il était instable, et parfois pire que la règle simple. La validation croisée a corrigé ce problème.
+
+2. **Un audit du jeu de données.**
+   - *Noms incohérents :* pour l'isolateur polymère, l'entraînement utilise des noms portugais (« normal », « corrosão ») et le test des noms anglais (« good », « rust »). Sans harmonisation, le score s'effondre à 0,000 alors que le modèle a raison.
+   - *Fuite entre entraînement et test :* pour 3 équipements, des découpes de la **même photo de drone** sont dans les deux ensembles (11, 131 et 268 photos). On a donc comparé les scores sur les photos déjà vues et sur les photos nouvelles. Aucun gonflement mesurable : par exemple, 17/17 défauts trouvés sur les photos nouvelles de la suspension de joug, et 0,944 contre 0,930 pour le vari-grip.
+
+3. **Une vérification Grad-CAM.** Pour la rouille, la zone regardée est bien la pièce rouillée ; pour les nids, ce sont les brindilles. Le cas le plus faible est l'isolateur en verre, où un défaut raté est regardé au bord de l'image.
+
+**Limites :**
+
+- Les ensembles de test sont petits (20 à 43 défauts par équipement). Un même code a donné 0,998 puis 0,950 pour le paratonnerre selon l'exécution : un seul entraînement ne suffit pas pour départager le modèle et l'article.
+- Le capuchon manquant reste difficile : c'est un petit détail dans une image réduite à 224 pixels. Piste : une résolution plus élevée.
+
+![Matrices de confusion](results/etape5_defauts/matrices_confusion.png)
+
+![Grad-CAM suspension de joug](results/etape5_defauts/gradcam_yoke-suspension.png)
+
+Notebooks : [`07_diagnostic_defauts_kaggle.ipynb`](notebooks/07_diagnostic_defauts_kaggle.ipynb) (exécuté) · [`07_diagnostic_defauts.ipynb`](notebooks/07_diagnostic_defauts.ipynb) (version Colab)
 
 ## Résultats clés : phase de modélisation sur le jeu CPLID (phases 2 à 4)
 
