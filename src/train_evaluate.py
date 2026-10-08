@@ -1,5 +1,5 @@
 """
-VoltSight — Étape 2 : entraînement et évaluation du BPNN
+VoltSight - Étape 2 : entraînement et évaluation du BPNN
 ========================================================
 
 Question : un BPNN peut-il dire si un isolateur est défectueux
@@ -259,7 +259,7 @@ def plot_all(out, best_name, model, yte, probs, thr, X_img_te, crops_rep):
     ax.plot(model.history["val_loss"], label="validation")
     ax.axvline(model.best_epoch - 1, ls="--", c="grey", label=f"meilleure époque ({model.best_epoch})")
     ax.set_xlabel("époque"); ax.set_ylabel("perte (entropie croisée pondérée)")
-    ax.set_title(f"BPNN ({best_name}) — courbes d'apprentissage"); ax.legend()
+    ax.set_title(f"BPNN ({best_name}) - courbes d'apprentissage"); ax.legend()
     fig.tight_layout(); fig.savefig(f"{out}/courbes_apprentissage.png", dpi=120); plt.close(fig)
 
     # 2. ROC et précision-rappel pour tous les modèles

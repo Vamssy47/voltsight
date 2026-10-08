@@ -1,5 +1,5 @@
 """
-VoltSight — Étape 3 : BPNN « par zone » (correction du raccourci)
+VoltSight - Étape 3 : BPNN « par zone » (correction du raccourci)
 =================================================================
 
 Problème découvert à l'étape 2 (test de masquage) :

@@ -1,5 +1,5 @@
 """
-VoltSight — Étape 4 : CNN (réseau convolutif) sur la tâche par zones
+VoltSight - Étape 4 : CNN (réseau convolutif) sur la tâche par zones
 ====================================================================
 
 Objectif : battre le BPNN de l'étape 3 sur EXACTEMENT la même tâche
@@ -318,7 +318,7 @@ def main():
         Xtr, Ytr = train_sets[variant]
         runs, kept = [], []
         for s in range(args.seeds):
-            print(f"\n=== CNN {variant} — entraînement {s + 1}/{args.seeds} ===")
+            print(f"\n=== CNN {variant} - entraînement {s + 1}/{args.seeds} ===")
             t0 = time.time()
             path = f"{args.out}/cnn_{variant}_graine{s}.pt"
             if args.reuse and os.path.exists(path):
@@ -378,7 +378,7 @@ def main():
             ax2 = ax1.twinx(); ax2.plot(m.hist["val_pr_auc"], c="tab:orange")
             ax2.set_ylabel("PR-AUC validation", color="tab:orange")
             ax1.axvline(m.best_epoch - 1, ls="--", c="grey")
-            ax1.set_title(f"CNN {v} — apprentissage (meilleure époque : {m.best_epoch})")
+            ax1.set_title(f"CNN {v} - apprentissage (meilleure époque : {m.best_epoch})")
             fig.tight_layout(); fig.savefig(f"{args.out}/cnn_{v}_courbes.png", dpi=120); plt.close(fig)
 
         p1 = predict(m, to_tensor(erased["x1.5"], device))

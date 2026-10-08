@@ -1,5 +1,5 @@
 """
-VoltSight — BPNN (Back-Propagation Neural Network) codé à la main en NumPy
+VoltSight - BPNN (Back-Propagation Neural Network) codé à la main en NumPy
 ==========================================================================
 
 Réseau de neurones multicouche entièrement connecté, entraîné par

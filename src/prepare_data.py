@@ -1,5 +1,5 @@
 """
-VoltSight — Étape 1 : préparation des données pour le BPNN
+VoltSight - Étape 1 : préparation des données pour le BPNN
 ==========================================================
 
 Jeu de données : CPLID (Chinese Power Line Insulator Dataset)
