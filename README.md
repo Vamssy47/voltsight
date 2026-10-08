@@ -22,8 +22,9 @@ Projet de portfolio en science des données, inspiré des pratiques d'inspection
 | 5.1–5.2 Équipements réels | InsPLAD : 10 607 photos de drone, 17 équipements, détection YOLO11s | ✅ mAP 0,740 |
 | 5.3 Défauts réels | Rouille, nid d'oiseau, capuchon manquant ; seuil fondé sur le coût ; audit de fuite | ✅ précision équilibrée 0,947 |
 | 5.4 Pipeline complet | Photo → YOLO → diagnostic → liste de réparations par priorité ; vérification humaine | ✅ 44 ms par photo |
-| 6. Végétation et capteurs | Segmentation des lignes, anomalies de capteurs | ⏳ |
-| 7. Score de risque et tableau de bord | Priorisation des interventions, API, carte | ⏳ |
+| 6. Tableau de bord | Alertes regroupées par pylône, seuil réglable, fiches avec photos et vérification humaine | ✅ [voir le tableau de bord](https://vamssy47.github.io/voltsight/tableau_de_bord.html) |
+| 7. Végétation et capteurs | Segmentation des lignes, anomalies de capteurs | ⏳ |
+| 8. API et intégration | Service d'inférence, carte géoréférencée sur données réelles | ⏳ |
 
 ## Résultats clés : détection des équipements sur de vraies photos de drone (phase 5.2)
 
@@ -134,6 +135,17 @@ La priorité vaut probabilité × gravité. Les gravités sont **illustratives**
 ![Grille de vérification humaine](results/etape5_pipeline/verification_humaine.png)
 
 Notebook : [`08_pipeline_complet_kaggle.ipynb`](notebooks/08_pipeline_complet_kaggle.ipynb)
+
+## Tableau de bord d'inspection (phase 6)
+
+👉 **[Ouvrir le tableau de bord](https://vamssy47.github.io/voltsight/tableau_de_bord.html)** (fichier : [`docs/tableau_de_bord.html`](docs/tableau_de_bord.html), une seule page, sans serveur).
+
+Ce que le tableau de bord montre :
+
+- **les 414 alertes du pipeline, regroupées en 45 structures** (pylône et côté). Un même défaut apparaît sur plusieurs photos : sur la structure 277-2, 75 alertes correspondent à une seule intervention ;
+- **un schéma de la ligne**, pylône par pylône, coloré selon la priorité. InsPLAD n'a pas de coordonnées GPS ; le schéma ordonne donc les pylônes par numéro, sans position géographique ;
+- **un seuil réglable** : le préréglage « seuil terrain (p ≥ 0,5) » montre l'effet d'un seuil plus strict sur le nombre d'interventions. Il est illustratif ;
+- **une fiche par structure**, avec la liste des alertes, des photos annotées et le résultat de la vérification humaine : confirmé, incertain ou fausse alerte.
 
 ## Résultats clés : phase de modélisation sur le jeu CPLID (phases 2 à 4)
 
