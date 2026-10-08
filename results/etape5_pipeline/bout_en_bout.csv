@@ -1,0 +1,5 @@
+équipement,défauts,bons,YOLO trouve l'équipement,défauts signalés (pipeline),fausses alertes (pipeline),défauts signalés (boîte réelle),fausses alertes (boîte réelle)
+glass-insulator,2,3,4/5,2/2,0/3,2/2,0/3
+polymer-insulator-upper-shackle,0,3,3/3,0/0,0/3,0/0,0/3
+vari-grip,0,16,16/16,0/0,3/16,0/0,4/16
+yoke-suspension,0,45,43/45,0/0,0/45,0/0,0/45

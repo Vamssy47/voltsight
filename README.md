@@ -9,6 +9,7 @@ Projet de portfolio en science des données, inspiré des pratiques d'inspection
 - **Détection des équipements :** YOLO11s atteint un **mAP@0.5:0.95 de 0,740**, comparable au meilleur modèle de l'article de référence (DetectoRS, 0,721), tout en étant beaucoup plus léger : environ 3 ms par image sur un GPU T4.
 - **Diagnostic des défauts** (rouille, nid d'oiseau, capuchon manquant) : précision équilibrée moyenne de **0,947** (article : 0,954). Avec un seuil d'alerte réglé sur le coût métier, le modèle trouve **143 défauts sur 146** pour seulement 0,7 % de fausses alertes.
 - **Audit des données :** deux problèmes trouvés dans le jeu public et traités, à savoir des noms de classes incohérents et une fuite entre l'entraînement et le test.
+- **Pipeline complet :** une photo passe par la détection, puis par le diagnostic, et en ressort une liste de réparations. Il analyse 2 626 photos de test en 2 minutes (44 ms par photo). Sur les alertes urgentes vérifiées à l'œil, le plus gros groupe correspond à un **vrai disque de verre manquant**.
 
 ## Où en est le projet
 
@@ -20,6 +21,7 @@ Projet de portfolio en science des données, inspiré des pratiques d'inspection
 | 4. Décision | Ensemble de 3 modèles, seuil fondé sur le coût d'un défaut manqué | ✅ (amélioration prévue : seuil par validation croisée) |
 | 5.1–5.2 Équipements réels | InsPLAD : 10 607 photos de drone, 17 équipements, détection YOLO11s | ✅ mAP 0,740 |
 | 5.3 Défauts réels | Rouille, nid d'oiseau, capuchon manquant ; seuil fondé sur le coût ; audit de fuite | ✅ précision équilibrée 0,947 |
+| 5.4 Pipeline complet | Photo → YOLO → diagnostic → liste de réparations par priorité ; vérification humaine | ✅ 44 ms par photo |
 | 6. Végétation et capteurs | Segmentation des lignes, anomalies de capteurs | ⏳ |
 | 7. Score de risque et tableau de bord | Priorisation des interventions, API, carte | ⏳ |
 
@@ -97,6 +99,41 @@ YOLO trouve les équipements ; un second modèle dit **s'ils sont en bon état**
 ![Grad-CAM suspension de joug](results/etape5_defauts/gradcam_yoke-suspension.png)
 
 Notebooks : [`07_diagnostic_defauts_kaggle.ipynb`](notebooks/07_diagnostic_defauts_kaggle.ipynb) (exécuté) · [`07_diagnostic_defauts.ipynb`](notebooks/07_diagnostic_defauts.ipynb) (version Colab)
+
+## Résultats clés : le pipeline complet, de la photo à la liste de réparations (phase 5.4)
+
+**Photo de drone → YOLO trouve les équipements → chaque équipement est découpé et diagnostiqué → alerte selon le seuil coût → liste de réparations triée par priorité.**
+
+| Mesure (2 626 photos de test, GPU T4) | Valeur |
+| --- | --- |
+| Temps d'analyse | **115 s au total, soit 44 ms par photo** |
+| Équipements détectés / diagnostiqués | 6 465 / 2 986 |
+| Interventions proposées | 414 : 45 « urgentes » sur 8 structures, 369 « à planifier » |
+
+La priorité vaut probabilité × gravité. Les gravités sont **illustratives** et ne viennent pas d'une norme d'Hydro-Québec : nid d'oiseau = 3, capuchon manquant = 3, rouille = 2.
+
+**Mesurer le pipeline de bout en bout : une limite du jeu public.** Les deux parties d'InsPLAD (détection et défauts) nomment les photos différemment : « 284-1_DJI_0495 » d'un côté, « Fotos 26-11-2020_DJI_0214 » de l'autre. Elles semblent surtout provenir de vols différents. On a relié les boîtes de détection aux découpes de défauts **par ressemblance visuelle** : empreintes d'un réseau ImageNet, plus proche voisin réciproque, ressemblance ≥ 0,90. Sur les paires contrôlées, il s'agit bien du même objet. Seules **69 boîtes de test** sont étiquetées et jamais vues, dont seulement 2 défauts.
+
+- YOLO retrouve 66 de ces 69 équipements.
+- Les 2 défauts sont signalés, et il y a 3 fausses alertes sur 67 équipements sains.
+- C'est trop peu de défauts pour mesurer un rappel de bout en bout ; on ne prétend donc pas en avoir un.
+
+**Vérification humaine des alertes.** C'est ce que ferait une équipe d'inspection : regarder les alertes proposées par l'IA.
+
+- **Alertes urgentes :** le plus gros groupe (21 alertes sur la structure 277-2, sur des photos qui se suivent) montre **un vrai disque de verre manquant** sur une chaîne d'isolateurs, visible en gros plan. Les alertes « nid d'oiseau » montrent de vrais nids. Il y a aussi des erreurs : sur une photo, le modèle regarde des feuilles de palmier.
+- **Alertes « à planifier » à faible probabilité (0,03 à 0,39) :** ce sont surtout des fausses alertes. Le pipeline met en alerte 28 % des isolateurs en verre et 37 % des vari-grips, ce qui est irréaliste.
+
+**Leçon de déploiement :** un seuil réglé sur des découpes propres **ne se transfère pas** tel quel aux boîtes produites par un détecteur : gros plans, chaînes coupées par le bord de l'image. Avant une mise en service, il faudrait :
+
+1. recalibrer le seuil sur un petit échantillon de terrain vérifié par un humain ;
+2. n'envoyer en intervention que les alertes urgentes ;
+3. regrouper les alertes **par structure**, car un même défaut apparaît sur plusieurs photos (21 alertes devraient donner 1 intervention).
+
+![Vérification des alertes « capuchon manquant »](results/etape5_pipeline/verification_capuchons.png)
+
+![Grille de vérification humaine](results/etape5_pipeline/verification_humaine.png)
+
+Notebook : [`08_pipeline_complet_kaggle.ipynb`](notebooks/08_pipeline_complet_kaggle.ipynb)
 
 ## Résultats clés : phase de modélisation sur le jeu CPLID (phases 2 à 4)
 

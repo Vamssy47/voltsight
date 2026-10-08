@@ -1,0 +1,14 @@
+{
+  "photos": 2626,
+  "detections": 6465,
+  "alertes": 414,
+  "seuils": {
+    "glass-insulator": 0.0189589262008667,
+    "lightning-rod-suspension": 0.09988674521446228,
+    "polymer-insulator-upper-shackle": 0.026505261659622192,
+    "vari-grip": 0.005314916372299194,
+    "yoke-suspension": 0.2392462193965912
+  },
+  "marge": 0.1,
+  "conf_yolo": 0.25
+}
